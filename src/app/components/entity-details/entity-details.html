@@ -1,0 +1,28 @@
+<div class="entity-details p-4">
+  @if (item(); as item) {
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">{{ item.name }}</h4>
+        <button class="btn btn-outline-secondary btn-sm" (click)="goBack()">
+          Back to List
+        </button>
+      </div>
+      <div class="card-body">
+        <p class="text-muted mb-4">{{ item.description }}</p>
+
+        <h6 class="text-uppercase text-muted mb-3">Details</h6>
+        <dl class="row">
+          @for (field of fields(); track field.label) {
+            <dt class="col-sm-4">{{ field.label }}</dt>
+            <dd class="col-sm-8">{{ field.value }}</dd>
+          }
+        </dl>
+      </div>
+    </div>
+  } @else {
+    <div class="alert alert-warning">
+      Item not found.
+      <button class="btn btn-link p-0 ms-2" (click)="goBack()">Go back</button>
+    </div>
+  }
+</div>

@@ -1,0 +1,16 @@
+.entity-details {
+  height: 100%;
+
+  .card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  }
+
+  dt {
+    font-weight: 500;
+    color: #6c757d;
+  }
+
+  dd {
+    margin-bottom: 0.75rem;
+  }
+}

@@ -1,5 +1,5 @@
 import { Component, inject, signal, effect } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs/operators';
 
@@ -17,6 +17,7 @@ interface EntityItem {
 })
 export class EntityList {
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
 
   entityName = toSignal(this.route.data.pipe(map((data) => data['entityName'])));
 
@@ -54,5 +55,10 @@ export class EntityList {
         this.items.set(this.sampleData[name] || []);
       }
     });
+  }
+
+  onItemClick(item: EntityItem): void {
+    const entityPath = this.entityName()?.toLowerCase() || '';
+    this.router.navigate(['/', entityPath, item.id]);
   }
 }
