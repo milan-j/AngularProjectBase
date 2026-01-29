@@ -46,6 +46,13 @@ export class EntityList {
       { id: 4, name: 'Dr. David Lee', description: 'Cardiology' },
       { id: 5, name: 'Dr. Lisa Chen', description: 'Dermatology' },
     ],
+    Recipes: [
+      { id: 1, name: 'Ibuprofen 400mg', description: 'Pain relief - Take with food' },
+      { id: 2, name: 'Amoxicillin 500mg', description: 'Antibiotic - 3x daily for 7 days' },
+      { id: 3, name: 'Lisinopril 10mg', description: 'Blood pressure - Once daily' },
+      { id: 4, name: 'Metformin 850mg', description: 'Diabetes - Twice daily with meals' },
+      { id: 5, name: 'Omeprazole 20mg', description: 'Acid reflux - Before breakfast' },
+    ],
   };
 
   constructor() {

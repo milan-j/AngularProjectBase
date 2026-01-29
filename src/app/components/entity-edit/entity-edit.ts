@@ -49,6 +49,13 @@ export class EntityEdit {
       { id: 4, name: 'Dr. David Lee', description: 'Cardiology', phone: '555-1004', email: 'lee@clinic.com', yearsExperience: 20 },
       { id: 5, name: 'Dr. Lisa Chen', description: 'Dermatology', phone: '555-1005', email: 'chen@clinic.com', yearsExperience: 10 },
     ],
+    Recipes: [
+      { id: 1, name: 'Ibuprofen 400mg', description: 'Pain relief - Take with food', dosage: '1 tablet', frequency: '3x daily', duration: '5 days', prescribedBy: 'Dr. Wilson' },
+      { id: 2, name: 'Amoxicillin 500mg', description: 'Antibiotic - 3x daily for 7 days', dosage: '1 capsule', frequency: '3x daily', duration: '7 days', prescribedBy: 'Dr. Garcia' },
+      { id: 3, name: 'Lisinopril 10mg', description: 'Blood pressure - Once daily', dosage: '1 tablet', frequency: 'Once daily', duration: 'Ongoing', prescribedBy: 'Dr. Lee' },
+      { id: 4, name: 'Metformin 850mg', description: 'Diabetes - Twice daily with meals', dosage: '1 tablet', frequency: '2x daily', duration: 'Ongoing', prescribedBy: 'Dr. Wilson' },
+      { id: 5, name: 'Omeprazole 20mg', description: 'Acid reflux - Before breakfast', dosage: '1 capsule', frequency: 'Once daily', duration: '14 days', prescribedBy: 'Dr. Adams' },
+    ],
   };
 
   item = computed(() => {

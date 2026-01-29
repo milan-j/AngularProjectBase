@@ -50,4 +50,19 @@ export const routes: Routes = [
     component: EntityEdit,
     data: { entityName: 'Doctors' },
   },
+  {
+    path: 'recipes',
+    component: EntityList,
+    data: { entityName: 'Recipes' },
+  },
+  {
+    path: 'recipes/:id',
+    component: EntityDetails,
+    data: { entityName: 'Recipes' },
+  },
+  {
+    path: 'recipes/:id/edit',
+    component: EntityEdit,
+    data: { entityName: 'Recipes' },
+  },
 ];

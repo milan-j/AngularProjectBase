@@ -12,5 +12,6 @@ export class SideMenu {
     { label: 'Patients', route: '/patients' },
     { label: 'Appointments', route: '/appointments' },
     { label: 'Doctors', route: '/doctors' },
+    { label: 'Recipes', route: '/recipes' },
   ];
 }
