@@ -54,6 +54,26 @@ ng e2e
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
+## Screenshots
+
+### Application Overview
+![Application Overview](./docs/screenshots/app-overview.png)
+*Main application interface showing the side menu and content area*
+
+### Entity List View
+![Entity List](./docs/screenshots/entity-list.png)
+*List of entities with navigation*
+
+### Entity Details View
+![Entity Details](./docs/screenshots/entity-details.png)
+*Detailed view of a selected entity*
+
+### Entity Edit View
+![Entity Edit](./docs/screenshots/entity-edit.png)
+*Form for editing entity information*
+
+> **Note:** To add screenshots, create a `docs/screenshots` folder in the project root and save your images there.
+
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
