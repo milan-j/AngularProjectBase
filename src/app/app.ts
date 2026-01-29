@@ -1,12 +1,11 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { SideMenu } from './components/side-menu/side-menu';
+import { MainContent } from './components/main-content/main-content';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [SideMenu, MainContent],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
-export class App {
-  protected readonly title = signal('angular-app');
-}
+export class App {}

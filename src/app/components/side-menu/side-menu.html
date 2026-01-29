@@ -1,0 +1,18 @@
+<nav class="side-menu bg-light border-end">
+  <div class="p-3">
+    <h5 class="text-muted mb-3">Menu</h5>
+    <ul class="nav flex-column">
+      @for (item of menuItems; track item.route) {
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="item.route"
+            routerLinkActive="active"
+          >
+            {{ item.label }}
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</nav>

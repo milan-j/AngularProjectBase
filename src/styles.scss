@@ -2,3 +2,11 @@
 
 /* Importing Bootstrap SCSS file. */
 @use 'bootstrap/scss/bootstrap';
+
+/* Global styles for full viewport height */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
