@@ -1,5 +1,6 @@
-import { Component, inject, computed } from '@angular/core';
+import { Component, inject, signal, computed } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs/operators';
 
@@ -11,17 +12,19 @@ interface EntityItem {
 }
 
 @Component({
-  selector: 'app-entity-details',
-  imports: [],
-  templateUrl: './entity-details.html',
-  styleUrl: './entity-details.scss',
+  selector: 'app-entity-edit',
+  imports: [FormsModule],
+  templateUrl: './entity-edit.html',
+  styleUrl: './entity-edit.scss',
 })
-export class EntityDetails {
+export class EntityEdit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
 
   entityName = toSignal(this.route.data.pipe(map((data) => data['entityName'])));
   entityId = toSignal(this.route.params.pipe(map((params) => +params['id'])));
+
+  formData = signal<Record<string, string>>({});
 
   // Sample data for each entity type
   private sampleData: Record<string, EntityItem[]> = {
@@ -64,8 +67,34 @@ export class EntityDetails {
         key,
         label: this.formatLabel(key),
         value: String(value),
+        type: this.getFieldType(key),
       }));
   });
+
+  constructor() {
+    // Initialize form data when item loads
+    const item = this.item();
+    if (item) {
+      this.initFormData(item);
+    }
+  }
+
+  ngOnInit(): void {
+    const item = this.item();
+    if (item) {
+      this.initFormData(item);
+    }
+  }
+
+  private initFormData(item: EntityItem): void {
+    const data: Record<string, string> = {};
+    Object.entries(item)
+      .filter(([key]) => key !== 'id')
+      .forEach(([key, value]) => {
+        data[key] = String(value);
+      });
+    this.formData.set(data);
+  }
 
   private formatLabel(key: string): string {
     return key
@@ -73,14 +102,31 @@ export class EntityDetails {
       .replace(/^./, (str) => str.toUpperCase());
   }
 
-  goBack(): void {
-    const entityPath = this.entityName()?.toLowerCase() || '';
-    this.router.navigate(['/', entityPath]);
+  private getFieldType(key: string): 'text' | 'email' | 'tel' | 'date' | 'number' {
+    if (key === 'email') return 'email';
+    if (key === 'phone') return 'tel';
+    if (key.toLowerCase().includes('date') || key === 'dateOfBirth') return 'date';
+    if (key === 'yearsExperience') return 'number';
+    return 'text';
   }
 
-  goToEdit(): void {
+  updateField(key: string, value: string): void {
+    this.formData.update((data) => ({ ...data, [key]: value }));
+  }
+
+  cancel(): void {
+    this.navigateToDetails();
+  }
+
+  save(): void {
+    // TODO: Implement save via service
+    console.log('Save data:', this.formData());
+    this.navigateToDetails();
+  }
+
+  private navigateToDetails(): void {
     const entityPath = this.entityName()?.toLowerCase() || '';
     const id = this.entityId();
-    this.router.navigate(['/', entityPath, id, 'edit']);
+    this.router.navigate(['/', entityPath, id]);
   }
 }

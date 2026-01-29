@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { EntityList } from './components/entity-list/entity-list';
 import { EntityDetails } from './components/entity-details/entity-details';
+import { EntityEdit } from './components/entity-edit/entity-edit';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'patients', pathMatch: 'full' },
@@ -15,6 +16,11 @@ export const routes: Routes = [
     data: { entityName: 'Patients' },
   },
   {
+    path: 'patients/:id/edit',
+    component: EntityEdit,
+    data: { entityName: 'Patients' },
+  },
+  {
     path: 'appointments',
     component: EntityList,
     data: { entityName: 'Appointments' },
@@ -25,6 +31,11 @@ export const routes: Routes = [
     data: { entityName: 'Appointments' },
   },
   {
+    path: 'appointments/:id/edit',
+    component: EntityEdit,
+    data: { entityName: 'Appointments' },
+  },
+  {
     path: 'doctors',
     component: EntityList,
     data: { entityName: 'Doctors' },
@@ -32,6 +43,11 @@ export const routes: Routes = [
   {
     path: 'doctors/:id',
     component: EntityDetails,
+    data: { entityName: 'Doctors' },
+  },
+  {
+    path: 'doctors/:id/edit',
+    component: EntityEdit,
     data: { entityName: 'Doctors' },
   },
 ];
